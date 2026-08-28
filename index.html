@@ -68,9 +68,11 @@
   }
   .nav-inner{ display:flex; align-items:center; justify-content:space-between; height:76px; }
   .nav-name{
+    display:flex; align-items:center; gap:9px; margin-left:-56px;
     font-family:var(--sans); font-size:12.5px; letter-spacing:.14em; text-transform:uppercase;
     color:var(--ink); text-decoration:none; font-weight:500;
   }
+  .nav-name-icon{ display:block; width:30px; height:30px; object-fit:contain; }
   .nav-links{ display:flex; gap:42px; list-style:none; margin:0; padding:0; }
   .nav-links a{
     font-family:var(--sans); font-size:12px; letter-spacing:.1em; text-transform:uppercase;
@@ -92,7 +94,8 @@
     box-shadow:0 16px 36px rgba(20,20,20,.1); padding:8px 0; z-index:31;
   }
   .nav-dropdown-menu a{
-    display:block; padding:10px 20px; font-family:var(--mono); font-size:12px; letter-spacing:.02em;
+    display:block; padding:10px 20px; font-family:var(--sans); font-size:13px; letter-spacing:0;
+    text-transform:none;
     color:var(--ink-soft); text-decoration:none; white-space:nowrap;
     opacity:0; transform:translateY(-6px);
     animation-duration:.3s; animation-timing-function:ease; animation-fill-mode:forwards;
@@ -184,6 +187,14 @@
     transition:transform .25s ease;
   }
   .tile-logo:hover img{ transform:scale(1.05); }
+  .tile-logo.icon-large img{
+    left:8%; right:8%; top:3%;
+    width:84%; max-height:calc(100% - 88px);
+  }
+  .tile-logo.icon-small img{
+    left:24%; right:24%; top:16%;
+    width:52%; max-height:calc(100% - 106px);
+  }
   .tile-logo .tile-cap{
     position:relative; z-index:1; width:100%; text-align:left; padding:14px 14px 16px;
     border-top:1px solid var(--line);
@@ -192,7 +203,7 @@
 
   /* ---------- project detail ---------- */
   .project{
-    display:none; position:fixed; inset:0; z-index:50;
+    display:none; position:fixed; top:76px; left:0; right:0; bottom:0; z-index:15;
     background:var(--bg); overflow-y:auto;
   }
   .project:target{ display:block; }
@@ -324,6 +335,7 @@
 
   @media (max-width:860px){
     .wrap{ padding:0 28px; }
+    .nav-name{ margin-left:-28px; }
     .hero{ padding:100px 0 80px; }
     .index-strip{ padding:0 0 80px; }
     .about-section{ padding:0 0 80px; }
@@ -346,7 +358,10 @@
 
 <nav class="nav">
   <div class="wrap nav-inner">
-    <a class="nav-name" href="#top">Clara Cestone</a>
+    <a class="nav-name" href="#top">
+      <img src="images/logos/favicon-64.png" alt="" class="nav-name-icon">
+      Clara Cestone
+    </a>
     <ul class="nav-links">
       <li class="nav-dropdown">
         <input type="checkbox" id="nav-exp-toggle" class="nav-dropdown-toggle">
@@ -404,7 +419,7 @@
       <h2>Projects</h2>
     </div>
     <div class="tiles">
-      <a class="tile tile-logo" href="#role-igem">
+      <a class="tile tile-logo icon-small" href="#role-igem">
         <img src="images/logos/igem-logo.png" alt="Stanford iGEM Team">
         <span class="tile-cap">Stanford iGEM Team<br>Project Co&#8209;Lead</span>
       </a>
@@ -424,7 +439,7 @@
         <img src="images/logos/aimi-logo.png" alt="Stanford AIMI Center">
         <span class="tile-cap">Stanford AIMI Center<br>Summer Intern</span>
       </a>
-      <a class="tile tile-logo" href="#role-personal">
+      <a class="tile tile-logo icon-large" href="#role-personal">
         <img src="images/logos/personal-icon.png" alt="Personal Projects">
         <span class="tile-cap">Personal<br>Projects</span>
       </a>
