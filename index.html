@@ -1,0 +1,1064 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clara Cestone</title>
+<link rel="icon" type="image/png" sizes="512x512" href="images/logos/favicon-512.png">
+<link rel="icon" type="image/png" sizes="64x64" href="images/logos/favicon-64.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  @font-face{ font-family:"Ogg"; src:url("fonts/Ogg-Thin-Trial.ttf") format("truetype"); font-weight:100; font-style:normal; font-display:swap; }
+  @font-face{ font-family:"Ogg"; src:url("fonts/Ogg-ThinItalic-Trial.ttf") format("truetype"); font-weight:100; font-style:italic; font-display:swap; }
+  @font-face{ font-family:"Ogg"; src:url("fonts/Ogg-Light-Trial.ttf") format("truetype"); font-weight:300; font-style:normal; font-display:swap; }
+  @font-face{ font-family:"Ogg"; src:url("fonts/Ogg-LightItalic-Trial.ttf") format("truetype"); font-weight:300; font-style:italic; font-display:swap; }
+  @font-face{ font-family:"Ogg"; src:url("fonts/Ogg-Regular-Trial.ttf") format("truetype"); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face{ font-family:"Ogg"; src:url("fonts/Ogg-Italic-Trial.ttf") format("truetype"); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face{ font-family:"Ogg"; src:url("fonts/Ogg-Medium-Trial.ttf") format("truetype"); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face{ font-family:"Ogg"; src:url("fonts/Ogg-MediumItalic-Trial.ttf") format("truetype"); font-weight:500; font-style:italic; font-display:swap; }
+  @font-face{ font-family:"Ogg"; src:url("fonts/Ogg-Bold-Trial.ttf") format("truetype"); font-weight:700; font-style:normal; font-display:swap; }
+  @font-face{ font-family:"Ogg"; src:url("fonts/Ogg-BoldItalic-Trial.ttf") format("truetype"); font-weight:700; font-style:italic; font-display:swap; }
+
+  @font-face{ font-family:"Ogg Text"; src:url("fonts/OggText-Light-Trial.ttf") format("truetype"); font-weight:300; font-style:normal; font-display:swap; }
+  @font-face{ font-family:"Ogg Text"; src:url("fonts/OggText-LightItalic-Trial.ttf") format("truetype"); font-weight:300; font-style:italic; font-display:swap; }
+  @font-face{ font-family:"Ogg Text"; src:url("fonts/OggText-Book-Trial.ttf") format("truetype"); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face{ font-family:"Ogg Text"; src:url("fonts/OggText-Italic-Trial.ttf") format("truetype"); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face{ font-family:"Ogg Text"; src:url("fonts/OggText-Medium-Trial.ttf") format("truetype"); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face{ font-family:"Ogg Text"; src:url("fonts/OggText-MediumItalic-Trial.ttf") format("truetype"); font-weight:500; font-style:italic; font-display:swap; }
+  @font-face{ font-family:"Ogg Text"; src:url("fonts/OggText-Bold-Trial.ttf") format("truetype"); font-weight:700; font-style:normal; font-display:swap; }
+  @font-face{ font-family:"Ogg Text"; src:url("fonts/OggText-BoldItalic-Trial.ttf") format("truetype"); font-weight:700; font-style:italic; font-display:swap; }
+
+  :root{
+    --bg:          #ffffff;
+    --bg-tile:     #f4f3ef;
+    --ink:         #141414;
+    --ink-soft:    #68675f;
+    --ink-faint:   #a19f96;
+    --line:        #e8e6e0;
+    --line-strong: #cfccc3;
+
+    --display:      "Ogg", "Iowan Old Style", Georgia, serif;
+    --display-text: "Ogg Text", "Iowan Old Style", Georgia, serif;
+    --sans:    "Archivo", "Segoe UI", system-ui, sans-serif;
+    --mono:    "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+
+    --max: 1080px;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ background:var(--bg); }
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--sans); font-size:16px; line-height:1.6;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  a{ color:var(--ink); }
+  a:focus-visible, button:focus-visible{ outline:1.5px solid var(--ink); outline-offset:3px; }
+  h1,h2,h3{ font-family:var(--display); font-weight:400; margin:0; text-wrap:balance; color:var(--ink); }
+  .wrap{ max-width:var(--max); margin:0 auto; padding:0 56px; }
+
+  /* ---------- nav ---------- */
+  .nav{
+    position:sticky; top:0; z-index:20;
+    background:rgba(255,255,255,.9); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{ display:flex; align-items:center; justify-content:space-between; height:76px; }
+  .nav-name{
+    font-family:var(--sans); font-size:12.5px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--ink); text-decoration:none; font-weight:500;
+  }
+  .nav-links{ display:flex; gap:42px; list-style:none; margin:0; padding:0; }
+  .nav-links a{
+    font-family:var(--sans); font-size:12px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--ink-soft); text-decoration:none;
+  }
+  .nav-links a:hover{ color:var(--ink); }
+
+  .nav-dropdown{ position:relative; list-style:none; }
+  .nav-dropdown-toggle{ position:absolute; opacity:0; pointer-events:none; }
+  .nav-dropdown-label{
+    font-family:var(--sans); font-size:12px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--ink-soft); cursor:pointer; user-select:none;
+  }
+  .nav-dropdown-label:hover{ color:var(--ink); }
+  .nav-dropdown-backdrop{ display:none; position:fixed; inset:0; z-index:29; cursor:default; }
+  .nav-dropdown-menu{
+    display:none; position:absolute; top:calc(100% + 14px); left:50%; transform:translateX(-50%);
+    min-width:230px; background:var(--bg); border:1px solid var(--line);
+    box-shadow:0 16px 36px rgba(20,20,20,.1); padding:8px 0; z-index:31;
+  }
+  .nav-dropdown-menu a{
+    display:block; padding:10px 20px; font-family:var(--mono); font-size:12px; letter-spacing:.02em;
+    color:var(--ink-soft); text-decoration:none; white-space:nowrap;
+    opacity:0; transform:translateY(-6px);
+    animation-duration:.3s; animation-timing-function:ease; animation-fill-mode:forwards;
+  }
+  .nav-dropdown-menu a:hover{ color:var(--ink); background:var(--bg-tile); }
+  .nav-dropdown-toggle:checked ~ .nav-dropdown-backdrop,
+  .nav-dropdown-toggle:checked ~ .nav-dropdown-menu,
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown:focus-within .nav-dropdown-menu{ display:block; }
+  .nav-dropdown-toggle:checked ~ .nav-dropdown-menu a,
+  .nav-dropdown:hover .nav-dropdown-menu a,
+  .nav-dropdown:focus-within .nav-dropdown-menu a{
+    animation-name:navWaterfall;
+  }
+  .nav-dropdown-menu a:nth-child(1){ animation-delay:.02s; }
+  .nav-dropdown-menu a:nth-child(2){ animation-delay:.06s; }
+  .nav-dropdown-menu a:nth-child(3){ animation-delay:.10s; }
+  .nav-dropdown-menu a:nth-child(4){ animation-delay:.14s; }
+  .nav-dropdown-menu a:nth-child(5){ animation-delay:.18s; }
+  .nav-dropdown-menu a:nth-child(6){ animation-delay:.22s; }
+  @keyframes navWaterfall{ to{ opacity:1; transform:translateY(0); } }
+  @media (prefers-reduced-motion: reduce){
+    .nav-dropdown-menu a{ opacity:1; transform:none; animation:none; }
+  }
+
+  /* ---------- hero ---------- */
+  .hero{ padding:140px 0 110px; }
+  .hero-grid{ display:flex; flex-direction:column; align-items:flex-start; gap:28px; }
+  .hero h1{
+    font-size:clamp(64px, 10vw, 128px); font-weight:500; line-height:.94; letter-spacing:-.01em;
+  }
+  .hero-meta{
+    display:flex; flex-direction:column; gap:12px; text-align:left;
+  }
+  .hero-meta p{ margin:0; font-size:20px; color:var(--ink-soft); line-height:1.4; }
+  .hero-meta a{ color:var(--ink-soft); text-decoration:none; border-bottom:1px solid transparent; }
+  .hero-meta a:hover{ color:var(--ink); border-bottom-color:var(--ink); }
+  .about-section{ padding:0 0 110px; }
+  .hero-bio{ max-width:58ch; }
+  .hero-bio p{ margin:0 0 18px; font-size:16px; color:var(--ink-soft); line-height:1.65; min-height:1.65em; }
+  .hero-bio p:last-child{ margin-bottom:0; }
+
+  /* ---------- masthead (repeating section divider) ---------- */
+  .masthead{
+    display:flex; justify-content:space-between; align-items:center; gap:16px;
+    padding:16px 0; margin-bottom:48px; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft);
+  }
+  .masthead span:nth-child(2){ flex:1; text-align:center; }
+  .masthead span:last-child{ text-align:right; }
+
+  /* ---------- index strip ---------- */
+  .index-strip{ padding:0 0 110px; }
+  .index-head{ margin-bottom:48px; }
+  .index-head h2{ font-size:clamp(32px, 4.5vw, 48px); font-weight:600; text-transform:uppercase; letter-spacing:-.01em; }
+  .tiles{ display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; }
+  .tile{
+    position:relative; background:var(--ink); border-radius:28px; overflow:hidden;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    min-height:160px; padding:24px;
+    text-decoration:none; transition:background-color .15s ease, transform .15s ease;
+  }
+  .tile:not(.tile-photo):not(.tile-logo):hover{ background:#2b2b2b; }
+  .tile:hover{ transform:translateY(-2px); }
+  .tile-cap{
+    font-family:var(--display-text); font-style:normal; font-size:17px; letter-spacing:0; color:var(--bg-tile);
+    line-height:1.35;
+  }
+  .tile-photo{
+    aspect-ratio:1/1; padding:0; align-items:flex-end; justify-content:stretch;
+  }
+  .tile-photo img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+    transition:transform .25s ease;
+  }
+  .tile-photo:hover img{ transform:scale(1.05); }
+  .tile-photo .tile-cap{
+    position:relative; z-index:1; width:100%; text-align:left; padding:16px 14px;
+    background:linear-gradient(to top, rgba(15,15,15,.82), rgba(15,15,15,0));
+    color:#fff; font-family:var(--display-text); font-style:normal; font-size:16px; line-height:1.3;
+  }
+  .tile-logo{
+    aspect-ratio:1/1; padding:0; align-items:flex-end; justify-content:stretch;
+    background:#ffffff; border:1px solid var(--line);
+  }
+  .tile-logo img{
+    position:absolute; left:18%; right:18%; top:11%; bottom:76px; margin:auto;
+    width:64%; max-height:calc(100% - 96px); object-fit:contain;
+    transition:transform .25s ease;
+  }
+  .tile-logo:hover img{ transform:scale(1.05); }
+  .tile-logo .tile-cap{
+    position:relative; z-index:1; width:100%; text-align:left; padding:14px 14px 16px;
+    border-top:1px solid var(--line);
+    color:var(--ink); font-family:var(--display-text); font-style:normal; font-size:16px; line-height:1.3;
+  }
+
+  /* ---------- project detail ---------- */
+  .project{
+    display:none; position:fixed; inset:0; z-index:50;
+    background:var(--bg); overflow-y:auto;
+  }
+  .project:target{ display:block; }
+  .project-inner{ max-width:760px; margin:0 auto; padding:64px 56px 100px; }
+  .project-back{
+    display:inline-block; font-family:var(--mono); font-size:12px; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--ink-soft); text-decoration:none; margin-bottom:56px;
+  }
+  .project-back:hover{ color:var(--ink); }
+  .project-dates{ font-family:var(--mono); font-size:12px; color:var(--ink-faint); margin:0 0 20px; }
+  .project-org{ font-size:clamp(34px, 5.5vw, 54px); margin:0 0 10px; }
+  .project-role{ font-family:var(--display-text); font-style:italic; font-size:19px; color:var(--ink-soft); margin:0 0 10px; }
+  .project-sub{ padding-top:0; }
+  .project-sub + .project-sub{ border-top:1px solid var(--line); margin-top:56px; padding-top:56px; }
+  .project-subtitle{ font-size:26px; margin:0 0 20px; }
+  .project-list{ margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:22px; }
+  .project-list li{ position:relative; padding-left:22px; color:var(--ink-soft); font-size:16px; line-height:1.65; }
+  .project-list li::before{ content:"—"; position:absolute; left:0; top:0; color:var(--ink-faint); }
+  .project-figure{ margin:0; }
+  .project-figure + .project-figure{ margin-top:56px; }
+  .project-figure img{ width:100%; height:auto; max-height:78vh; object-fit:contain; display:block; border:1px solid var(--line); }
+  .project-figure figcaption{ margin-top:16px; }
+  .figure-title{
+    display:block; font-family:var(--display); font-size:16px; letter-spacing:0;
+    color:var(--ink);
+  }
+  .figure-caption-text{
+    margin:10px 0 0; font-family:var(--sans); font-size:13px; color:var(--ink-soft);
+    line-height:1.6; max-width:60ch;
+  }
+  .figure-text{ margin:0 0 28px; max-width:60ch; font-size:14.5px; color:var(--ink-soft); line-height:1.65; }
+  .project-link{
+    display:inline-block; margin:0 0 36px; font-family:var(--sans); font-size:14.5px; letter-spacing:0;
+    color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line-strong);
+  }
+  .project-link:hover{ border-bottom-color:var(--ink); }
+
+  /* ---------- contact page ---------- */
+  .contact-list{ margin-top:48px; display:flex; flex-direction:column; }
+  .contact-item{
+    display:flex; align-items:baseline; justify-content:space-between; gap:24px;
+    padding:26px 0; border-top:1px solid var(--line);
+    text-decoration:none; color:var(--ink);
+  }
+  .contact-list .contact-item:last-child{ border-bottom:1px solid var(--line); }
+  .contact-label{
+    font-family:var(--mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--ink-faint);
+  }
+  .contact-value{
+    font-family:var(--display); font-size:clamp(20px, 3vw, 30px); color:var(--ink);
+    text-align:right;
+  }
+  a.contact-item:hover .contact-value{ color:var(--ink-soft); }
+  .contact-item-static{ cursor:default; }
+
+  /* ---------- project menu (personal projects) ---------- */
+  .project-menu{ display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; margin-top:8px; }
+  .project-card{
+    position:relative; display:block; aspect-ratio:3/4; overflow:hidden;
+    border:1px solid var(--line); text-decoration:none;
+  }
+  .project-card img{
+    width:100%; height:100%; object-fit:cover; display:block;
+    transition:transform .25s ease;
+  }
+  .project-card:hover img{ transform:scale(1.05); }
+  .project-card-label{
+    position:absolute; left:0; right:0; bottom:0; padding:16px 14px;
+    background:linear-gradient(to top, rgba(15,15,15,.82), rgba(15,15,15,0));
+    color:#fff; font-family:var(--display-text); font-style:italic; font-size:16px; line-height:1.3;
+  }
+
+  /* ---------- single-slide viewer ---------- */
+  .slide-grid-title{ margin-bottom:16px; }
+  .slideshow{ position:relative; }
+  .slide-frame{ margin:0; }
+  .slide-radio{ position:absolute; opacity:0; pointer-events:none; }
+  .slide-img{ display:none; width:100%; height:auto; max-height:78vh; object-fit:contain; border:1px solid var(--line); }
+  .slide-caption{
+    display:none; margin:14px 0 0; font-family:var(--mono); font-size:12.5px;
+    color:var(--ink-soft); letter-spacing:.02em;
+  }
+  .slide-nav{ display:none; align-items:center; justify-content:space-between; margin-top:16px; }
+  .slide-radio:checked ~ .slide-img{ display:block; }
+  .slide-radio:checked ~ .slide-caption{ display:block; }
+  .slide-radio:checked ~ .slide-nav{ display:flex; }
+  .slide-prev, .slide-next{
+    font-family:var(--mono); font-size:22px; line-height:1; color:var(--ink-soft);
+    text-decoration:none; cursor:pointer; padding:4px 10px;
+  }
+  .slide-prev:hover, .slide-next:hover{ color:var(--ink); }
+  .slide-count{ font-family:var(--mono); font-size:12px; color:var(--ink-faint); letter-spacing:.04em; }
+
+  /* ---------- lightbox (CSS-only, no JS) ---------- */
+  .lightbox-toggle{ position:absolute; opacity:0; pointer-events:none; }
+  .figure-link{ display:block; cursor:zoom-in; }
+  .lightbox-backdrop{
+    display:none; position:fixed; inset:0; z-index:99;
+    background:rgba(10,10,10,.9); cursor:zoom-out;
+  }
+  .lightbox-close{
+    display:none; position:fixed; top:24px; right:32px; z-index:101;
+    font-family:var(--mono); font-size:30px; line-height:1; color:#fff;
+    text-decoration:none; cursor:pointer;
+  }
+  .lightbox-close:hover{ opacity:.7; }
+  .lightbox-toggle:checked ~ .lightbox-backdrop,
+  .lightbox-toggle:checked ~ .lightbox-close{ display:block; }
+  .lightbox-toggle:checked ~ .figure-link img{
+    position:fixed; inset:0; margin:auto; z-index:100;
+    max-width:92vw; max-height:92vh; width:auto; height:auto;
+    object-fit:contain; border:none; box-shadow:0 30px 80px rgba(0,0,0,.5);
+    cursor:zoom-out;
+  }
+
+  /* ---------- footer ---------- */
+  .footer-band{ background:var(--bg-tile); border-top:1px solid var(--line); }
+  .footer-inner{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; padding:56px 0; }
+  .arrow-link{
+    font-family:var(--display-text); font-size:22px; font-style:italic; color:var(--ink);
+    text-decoration:none; display:inline-flex; align-items:center; gap:10px;
+  }
+  .arrow-link:hover{ color:var(--ink-soft); }
+  .footer-meta{ display:flex; gap:22px; font-family:var(--mono); font-size:12px; color:var(--ink-soft); }
+  .footer-meta a{ color:var(--ink-soft); text-decoration:none; }
+  .footer-meta a:hover{ color:var(--ink); }
+  .fine{ text-align:center; padding:28px 0; font-family:var(--mono); font-size:10.5px; color:var(--ink-faint); letter-spacing:.06em; }
+
+  @media (max-width:860px){
+    .wrap{ padding:0 28px; }
+    .hero{ padding:100px 0 80px; }
+    .index-strip{ padding:0 0 80px; }
+    .about-section{ padding:0 0 80px; }
+    .tiles{ grid-template-columns:repeat(3, 1fr); gap:24px; }
+  }
+  @media (max-width:560px){
+    .nav-links{ gap:16px; }
+    .hero{ padding:64px 0 52px; }
+    .index-strip{ padding:0 0 56px; }
+    .about-section{ padding:0 0 56px; }
+    .tiles{ grid-template-columns:repeat(2, 1fr); }
+    .project-menu{ grid-template-columns:1fr; }
+    .masthead{ font-size:10px; }
+    .masthead span:nth-child(2){ display:none; }
+    .footer-inner{ flex-direction:column; align-items:flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="nav-name" href="#top">Clara Cestone</a>
+    <ul class="nav-links">
+      <li class="nav-dropdown">
+        <input type="checkbox" id="nav-exp-toggle" class="nav-dropdown-toggle">
+        <label for="nav-exp-toggle" class="nav-dropdown-label">Experience</label>
+        <label for="nav-exp-toggle" class="nav-dropdown-backdrop" aria-hidden="true"></label>
+        <div class="nav-dropdown-menu">
+          <a href="#role-igem">Stanford iGEM Team</a>
+          <a href="#role-ventures">Stanford Ventures</a>
+          <a href="#role-chemh">Sarafan ChEM&#8209;H</a>
+          <a href="#role-offhours">Off Hours</a>
+          <a href="#role-aimi">AIMI Center</a>
+          <a href="#role-personal">Personal Projects</a>
+        </div>
+      </li>
+      <li><a href="#contact-page">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="top">
+  <header class="hero wrap">
+    <div class="hero-grid">
+      <h1>Clara<br>Cestone</h1>
+      <div class="hero-meta">
+        <p>Bioengineering + MS&amp;E, Stanford University</p>
+        <p><a href="mailto:ccestone@stanford.edu">ccestone@stanford.edu</a> &middot; <a href="tel:+19495069136">949&#8209;506&#8209;9136</a> &middot; <a href="https://www.linkedin.com/in/clara-cestone-7b174226a/" target="_blank" rel="noopener">LinkedIn</a></p>
+      </div>
+    </div>
+  </header>
+
+  <section id="about" class="about-section wrap">
+    <div class="masthead">
+      <span>Clara Cestone</span>
+      <span>About</span>
+      <span>Palo Alto, CA</span>
+    </div>
+    <div class="index-head">
+      <h2>About</h2>
+    </div>
+    <div class="hero-bio" id="about-bio">
+      <p>Hi, I&rsquo;m Clara, an engineer currently pursuing a B.S. in Bioengineering and MS&amp;E at Stanford University.</p>
+      <p>I enjoy tampering with systems &mdash; disassembling, designing, and fixing parts, especially with friends. Currently building biosensors, therapeutics, communities, and more; I&rsquo;m best at applying technical engineering to support abstract ideas.</p>
+      <p>I want to see ideas grow into fruition and inhabit the innovation ecosystem broadly, whether that be through startups, university, or VC.</p>
+      <p>Please reach out &mdash; with ideas, for help, or to connect.</p>
+    </div>
+  </section>
+
+  <section id="experience" class="index-strip wrap">
+    <div class="masthead">
+      <span>Clara Cestone</span>
+      <span>Experience</span>
+      <span>Palo Alto, CA</span>
+    </div>
+    <div class="index-head">
+      <h2>Projects</h2>
+    </div>
+    <div class="tiles">
+      <a class="tile tile-logo" href="#role-igem">
+        <img src="images/logos/igem-logo.png" alt="Stanford iGEM Team">
+        <span class="tile-cap">Stanford iGEM Team<br>Project Co&#8209;Lead</span>
+      </a>
+      <a class="tile tile-logo" href="#role-ventures">
+        <img src="images/logos/sv-logo.png" alt="Stanford Ventures">
+        <span class="tile-cap">Stanford Ventures<br>Biotech Associate</span>
+      </a>
+      <a class="tile tile-logo" href="#role-chemh">
+        <img src="images/logos/chemh-logo.png" alt="Sarafan ChEM-H">
+        <span class="tile-cap">Sarafan ChEM&#8209;H<br>Team Lead</span>
+      </a>
+      <a class="tile tile-logo" href="#role-offhours">
+        <img src="images/logos/offhours-favicon.svg" alt="Off Hours">
+        <span class="tile-cap">Off Hours<br>Co&#8209;Founder</span>
+      </a>
+      <a class="tile tile-logo" href="#role-aimi">
+        <img src="images/logos/aimi-logo.png" alt="Stanford AIMI Center">
+        <span class="tile-cap">Stanford AIMI Center<br>Summer Intern</span>
+      </a>
+      <a class="tile tile-logo" href="#role-personal">
+        <img src="images/logos/personal-icon.png" alt="Personal Projects">
+        <span class="tile-cap">Personal<br>Projects</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="project" id="role-igem">
+    <div class="project-inner">
+      <a class="project-back" href="#experience">&larr; Back</a>
+      <p class="project-dates">2025 — Present</p>
+      <h2 class="project-org">Stanford iGEM Team</h2>
+      <p class="project-role">Project Co-Lead</p>
+      <p class="figure-text">
+        KelePatch aims to address keloid fibrosis using RADAR sensors for cell-specific reprogramming.
+        The project involves designing sensors that activate in keloid myofibroblasts, testing various
+        therapeutic outputs, and improving delivery via microneedle array patches. Next steps include
+        creating AND gates, using self-amplifying RNA, targeting immune cells, and increasing cell reach.
+      </p>
+      <figure class="project-figure">
+        <input type="checkbox" id="lightbox-igem" class="lightbox-toggle">
+        <label for="lightbox-igem" class="lightbox-backdrop" aria-hidden="true"></label>
+        <label for="lightbox-igem" class="lightbox-close" aria-label="Close">&times;</label>
+        <label for="lightbox-igem" class="figure-link">
+          <img src="images/kelepatch-poster.jpg" alt="Stanford iGEM Presentation Poster 8/27">
+        </label>
+        <figcaption>
+          <span class="figure-title">Stanford Bio-X Poster Presentation 8/27/26</span>
+        </figcaption>
+      </figure>
+
+      <figure class="project-figure">
+        <input type="checkbox" id="lightbox-igem-2" class="lightbox-toggle">
+        <label for="lightbox-igem-2" class="lightbox-backdrop" aria-hidden="true"></label>
+        <label for="lightbox-igem-2" class="lightbox-close" aria-label="Close">&times;</label>
+        <label for="lightbox-igem-2" class="figure-link">
+          <img src="images/shark-tank-pitch.jpg" alt="Biome Shark Tank Pitch">
+        </label>
+        <figcaption>
+          <span class="figure-title">Biome Shark Tank Pitch</span>
+        </figcaption>
+      </figure>
+
+      <figure class="project-figure">
+        <input type="checkbox" id="lightbox-igem-3" class="lightbox-toggle">
+        <label for="lightbox-igem-3" class="lightbox-backdrop" aria-hidden="true"></label>
+        <label for="lightbox-igem-3" class="lightbox-close" aria-label="Close">&times;</label>
+        <label for="lightbox-igem-3" class="figure-link">
+          <img src="images/bioe-symposium.jpg" alt="Bay Area Bioengineering Symposium Presentation">
+        </label>
+        <figcaption>
+          <span class="figure-title">Bay Area Bioengineering Symposium Presentation</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="project" id="role-ventures">
+    <div class="project-inner">
+      <a class="project-back" href="#experience">&larr; Back</a>
+      <p class="project-dates">2026 — Present</p>
+      <h2 class="project-org">Stanford Ventures</h2>
+      <p class="project-role">Biotech Associate</p>
+      <p class="figure-text">Building a residency for researchers innovating the future of human health.</p>
+      <a class="project-link" href="https://svfund.stanford.edu/" target="_blank" rel="noopener">Check out SV &rarr;</a>
+      <figure class="project-figure">
+        <input type="checkbox" id="lightbox-ventures" class="lightbox-toggle">
+        <label for="lightbox-ventures" class="lightbox-backdrop" aria-hidden="true"></label>
+        <label for="lightbox-ventures" class="lightbox-close" aria-label="Close">&times;</label>
+        <label for="lightbox-ventures" class="figure-link">
+          <img src="images/sv-demo-day.jpg" alt="SV Team at 2026 Accelerator Demo Day">
+        </label>
+        <figcaption>
+          <span class="figure-title">SV Team at 2026 Accelerator Demo Day</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="project" id="role-chemh">
+    <div class="project-inner">
+      <a class="project-back" href="#experience">&larr; Back</a>
+      <p class="project-dates">2026 — Present</p>
+      <h2 class="project-org">Sarafan ChEM-H Undergraduate Entrepreneurship Program</h2>
+      <p class="project-role">Team Lead</p>
+      <p class="figure-text">Developing a novel therapeutic for aging and longevity, preparing to pitch investors for a $50,000 award to advance into Stanford&rsquo;s Innovative Medicines Accelerator. Building &mdash; more coming soon&hellip;</p>
+    </div>
+  </section>
+
+  <section class="project" id="role-offhours">
+    <div class="project-inner">
+      <a class="project-back" href="#experience">&larr; Back</a>
+      <p class="project-dates">2026 — Present</p>
+      <h2 class="project-org">Off Hours</h2>
+      <p class="project-role">Co-Founder</p>
+      <p class="figure-text">Building a community for technical women.</p>
+      <a class="project-link" href="https://me.taylortam.com/off-hours/about.html" target="_blank" rel="noopener">Check out Off Hours &rarr;</a>
+    </div>
+  </section>
+
+  <section class="project" id="role-aimi">
+    <div class="project-inner">
+      <a class="project-back" href="#experience">&larr; Back</a>
+      <p class="project-dates">2024</p>
+      <h2 class="project-org">Stanford AI in Medicine &amp; Imaging (AIMI) Center</h2>
+      <p class="project-role">Summer Intern</p>
+      <p class="figure-text">Built a multi-label image classification model to detect pneumonia, pleural effusion, pneumothorax, and normal findings from chest X-ray images &mdash; earning 1st place among summer interns &mdash; while collaborating with a Stanford PhD candidate to extract annotations from clinical radiology reports, implement k-fold cross-validation, and construct model training loops.</p>
+      <span class="figure-title slide-grid-title">2024 AIMI Internship Final Presentation &mdash; Team B (Ctrl+Alt+Defeat)</span>
+      <div class="slideshow">
+        <figure class="slide-frame">
+          <input type="radio" name="aimi-view" id="lightbox-aimi-1" class="slide-radio" checked>
+          <img class="slide-img" src="images/aimi-deck/slide-01.jpg" alt="Slide 1 of 28">
+          <div class="slide-nav">
+            <label for="lightbox-aimi-28" class="slide-prev" aria-label="Previous slide">&#8249;</label>
+            <span class="slide-count">1 / 28</span>
+            <label for="lightbox-aimi-2" class="slide-next" aria-label="Next slide">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="aimi-view" id="lightbox-aimi-2" class="slide-radio">
+          <img class="slide-img" src="images/aimi-deck/slide-02.jpg" alt="Slide 2 of 28">
+          <div class="slide-nav">
+            <label for="lightbox-aimi-1" class="slide-prev" aria-label="Previous slide">&#8249;</label>
+            <span class="slide-count">2 / 28</span>
+            <label for="lightbox-aimi-3" class="slide-next" aria-label="Next slide">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="aimi-view" id="lightbox-aimi-3" class="slide-radio">
+          <img class="slide-img" src="images/aimi-deck/slide-03.jpg" alt="Slide 3 of 28">
+          <div class="slide-nav">
+            <label for="lightbox-aimi-2" class="slide-prev" aria-label="Previous slide">&#8249;</label>
+            <span class="slide-count">3 / 28</span>
+            <label for="lightbox-aimi-4" class="slide-next" aria-label="Next slide">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="aimi-view" id="lightbox-aimi-4" class="slide-radio">
+          <img class="slide-img" src="images/aimi-deck/slide-04.jpg" alt="Slide 4 of 28">
+          <div class="slide-nav">
+            <label for="lightbox-aimi-3" class="slide-prev" aria-label="Previous slide">&#8249;</label>
+            <span class="slide-count">4 / 28</span>
+            <label for="lightbox-aimi-5" class="slide-next" aria-label="Next slide">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="aimi-view" id="lightbox-aimi-5" class="slide-radio">
+          <img class="slide-img" src="images/aimi-deck/slide-05.jpg" alt="Slide 5 of 28">
+          <div class="slide-nav">
+            <label for="lightbox-aimi-4" class="slide-prev" aria-label="Previous slide">&#8249;</label>
+            <span class="slide-count">5 / 28</span>
+            <label for="lightbox-aimi-6" class="slide-next" aria-label="Next slide">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="aimi-view" id="lightbox-aimi-6" class="slide-radio">
+          <img class="slide-img" src="images/aimi-deck/slide-06.jpg" alt="Slide 6 of 28">
+          <div class="slide-nav">
+            <label for="lightbox-aimi-5" class="slide-prev" aria-label="Previous slide">&#8249;</label>
+            <span class="slide-count">6 / 28</span>
+            <label for="lightbox-aimi-7" class="slide-next" aria-label="Next slide">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="aimi-view" id="lightbox-aimi-7" class="slide-radio">
+          <img class="slide-img" src="images/aimi-deck/slide-07.jpg" alt="Slide 7 of 28">
+          <div class="slide-nav">
+            <label for="lightbox-aimi-6" class="slide-prev" aria-label="Previous slide">&#8249;</label>
+            <span class="slide-count">7 / 28</span>
+            <label for="lightbox-aimi-8" class="slide-next" aria-label="Next slide">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="aimi-view" id="lightbox-aimi-8" class="slide-radio">
+          <img class="slide-img" src="images/aimi-deck/slide-08.jpg" alt="Slide 8 of 28">
+          <div class="slide-nav">
+            <label for="lightbox-aimi-7" class="slide-prev" aria-label="Previous slide">&#8249;</label>
+            <span class="slide-count">8 / 28</span>
+            <label for="lightbox-aimi-9" class="slide-next" aria-label="Next slide">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="aimi-view" id="lightbox-aimi-9" class="slide-radio">
+          <img class="slide-img" src="images/aimi-deck/slide-09.jpg" alt="Slide 9 of 28">
+          <div class="slide-nav">
+            <label for="lightbox-aimi-8" class="slide-prev" aria-label="Previous slide">&#8249;</label>
+            <span class="slide-count">9 / 28</span>
+            <label for="lightbox-aimi-10" class="slide-next" aria-label="Next slide">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="aimi-view" id="lightbox-aimi-10" class="slide-radio">
+          <img class="slide-img" src="images/aimi-deck/slide-10.jpg" alt="Slide 10 of 28">
+          <div class="slide-nav">
+            <label for="lightbox-aimi-9" class="slide-prev" aria-label="Previous slide">&#8249;</label>
+            <span class="slide-count">10 / 28</span>
+            <label for="lightbox-aimi-11" class="slide-next" aria-label="Next slide">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="aimi-view" id="lightbox-aimi-11" class="slide-radio">
+          <img class="slide-img" src="images/aimi-deck/slide-11.jpg" alt="Slide 11 of 28">
+          <div class="slide-nav">
+            <label for="lightbox-aimi-10" class="slide-prev" aria-label="Previous slide">&#8249;</label>
+            <span class="slide-count">11 / 28</span>
+            <label for="lightbox-aimi-12" class="slide-next" aria-label="Next slide">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="aimi-view" id="lightbox-aimi-12" class="slide-radio">
+          <img class="slide-img" src="images/aimi-deck/slide-12.jpg" alt="Slide 12 of 28">
+          <div class="slide-nav">
+            <label for="lightbox-aimi-11" class="slide-prev" aria-label="Previous slide">&#8249;</label>
+            <span class="slide-count">12 / 28</span>
+            <label for="lightbox-aimi-13" class="slide-next" aria-label="Next slide">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="aimi-view" id="lightbox-aimi-13" class="slide-radio">
+          <img class="slide-img" src="images/aimi-deck/slide-13.jpg" alt="Slide 13 of 28">
+          <div class="slide-nav">
+            <label for="lightbox-aimi-12" class="slide-prev" aria-label="Previous slide">&#8249;</label>
+            <span class="slide-count">13 / 28</span>
+            <label for="lightbox-aimi-14" class="slide-next" aria-label="Next slide">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="aimi-view" id="lightbox-aimi-14" class="slide-radio">
+          <img class="slide-img" src="images/aimi-deck/slide-14.jpg" alt="Slide 14 of 28">
+          <div class="slide-nav">
+            <label for="lightbox-aimi-13" class="slide-prev" aria-label="Previous slide">&#8249;</label>
+            <span class="slide-count">14 / 28</span>
+            <label for="lightbox-aimi-15" class="slide-next" aria-label="Next slide">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="aimi-view" id="lightbox-aimi-15" class="slide-radio">
+          <img class="slide-img" src="images/aimi-deck/slide-15.jpg" alt="Slide 15 of 28">
+          <div class="slide-nav">
+            <label for="lightbox-aimi-14" class="slide-prev" aria-label="Previous slide">&#8249;</label>
+            <span class="slide-count">15 / 28</span>
+            <label for="lightbox-aimi-16" class="slide-next" aria-label="Next slide">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="aimi-view" id="lightbox-aimi-16" class="slide-radio">
+          <img class="slide-img" src="images/aimi-deck/slide-16.jpg" alt="Slide 16 of 28">
+          <div class="slide-nav">
+            <label for="lightbox-aimi-15" class="slide-prev" aria-label="Previous slide">&#8249;</label>
+            <span class="slide-count">16 / 28</span>
+            <label for="lightbox-aimi-17" class="slide-next" aria-label="Next slide">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="aimi-view" id="lightbox-aimi-17" class="slide-radio">
+          <img class="slide-img" src="images/aimi-deck/slide-17.jpg" alt="Slide 17 of 28">
+          <div class="slide-nav">
+            <label for="lightbox-aimi-16" class="slide-prev" aria-label="Previous slide">&#8249;</label>
+            <span class="slide-count">17 / 28</span>
+            <label for="lightbox-aimi-18" class="slide-next" aria-label="Next slide">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="aimi-view" id="lightbox-aimi-18" class="slide-radio">
+          <img class="slide-img" src="images/aimi-deck/slide-18.jpg" alt="Slide 18 of 28">
+          <div class="slide-nav">
+            <label for="lightbox-aimi-17" class="slide-prev" aria-label="Previous slide">&#8249;</label>
+            <span class="slide-count">18 / 28</span>
+            <label for="lightbox-aimi-19" class="slide-next" aria-label="Next slide">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="aimi-view" id="lightbox-aimi-19" class="slide-radio">
+          <img class="slide-img" src="images/aimi-deck/slide-19.jpg" alt="Slide 19 of 28">
+          <div class="slide-nav">
+            <label for="lightbox-aimi-18" class="slide-prev" aria-label="Previous slide">&#8249;</label>
+            <span class="slide-count">19 / 28</span>
+            <label for="lightbox-aimi-20" class="slide-next" aria-label="Next slide">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="aimi-view" id="lightbox-aimi-20" class="slide-radio">
+          <img class="slide-img" src="images/aimi-deck/slide-20.jpg" alt="Slide 20 of 28">
+          <div class="slide-nav">
+            <label for="lightbox-aimi-19" class="slide-prev" aria-label="Previous slide">&#8249;</label>
+            <span class="slide-count">20 / 28</span>
+            <label for="lightbox-aimi-21" class="slide-next" aria-label="Next slide">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="aimi-view" id="lightbox-aimi-21" class="slide-radio">
+          <img class="slide-img" src="images/aimi-deck/slide-21.jpg" alt="Slide 21 of 28">
+          <div class="slide-nav">
+            <label for="lightbox-aimi-20" class="slide-prev" aria-label="Previous slide">&#8249;</label>
+            <span class="slide-count">21 / 28</span>
+            <label for="lightbox-aimi-22" class="slide-next" aria-label="Next slide">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="aimi-view" id="lightbox-aimi-22" class="slide-radio">
+          <img class="slide-img" src="images/aimi-deck/slide-22.jpg" alt="Slide 22 of 28">
+          <div class="slide-nav">
+            <label for="lightbox-aimi-21" class="slide-prev" aria-label="Previous slide">&#8249;</label>
+            <span class="slide-count">22 / 28</span>
+            <label for="lightbox-aimi-23" class="slide-next" aria-label="Next slide">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="aimi-view" id="lightbox-aimi-23" class="slide-radio">
+          <img class="slide-img" src="images/aimi-deck/slide-23.jpg" alt="Slide 23 of 28">
+          <div class="slide-nav">
+            <label for="lightbox-aimi-22" class="slide-prev" aria-label="Previous slide">&#8249;</label>
+            <span class="slide-count">23 / 28</span>
+            <label for="lightbox-aimi-24" class="slide-next" aria-label="Next slide">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="aimi-view" id="lightbox-aimi-24" class="slide-radio">
+          <img class="slide-img" src="images/aimi-deck/slide-24.jpg" alt="Slide 24 of 28">
+          <div class="slide-nav">
+            <label for="lightbox-aimi-23" class="slide-prev" aria-label="Previous slide">&#8249;</label>
+            <span class="slide-count">24 / 28</span>
+            <label for="lightbox-aimi-25" class="slide-next" aria-label="Next slide">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="aimi-view" id="lightbox-aimi-25" class="slide-radio">
+          <img class="slide-img" src="images/aimi-deck/slide-25.jpg" alt="Slide 25 of 28">
+          <div class="slide-nav">
+            <label for="lightbox-aimi-24" class="slide-prev" aria-label="Previous slide">&#8249;</label>
+            <span class="slide-count">25 / 28</span>
+            <label for="lightbox-aimi-26" class="slide-next" aria-label="Next slide">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="aimi-view" id="lightbox-aimi-26" class="slide-radio">
+          <img class="slide-img" src="images/aimi-deck/slide-26.jpg" alt="Slide 26 of 28">
+          <div class="slide-nav">
+            <label for="lightbox-aimi-25" class="slide-prev" aria-label="Previous slide">&#8249;</label>
+            <span class="slide-count">26 / 28</span>
+            <label for="lightbox-aimi-27" class="slide-next" aria-label="Next slide">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="aimi-view" id="lightbox-aimi-27" class="slide-radio">
+          <img class="slide-img" src="images/aimi-deck/slide-27.jpg" alt="Slide 27 of 28">
+          <div class="slide-nav">
+            <label for="lightbox-aimi-26" class="slide-prev" aria-label="Previous slide">&#8249;</label>
+            <span class="slide-count">27 / 28</span>
+            <label for="lightbox-aimi-28" class="slide-next" aria-label="Next slide">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="aimi-view" id="lightbox-aimi-28" class="slide-radio">
+          <img class="slide-img" src="images/aimi-deck/slide-28.jpg" alt="Slide 28 of 28">
+          <div class="slide-nav">
+            <label for="lightbox-aimi-27" class="slide-prev" aria-label="Previous slide">&#8249;</label>
+            <span class="slide-count">28 / 28</span>
+            <label for="lightbox-aimi-1" class="slide-next" aria-label="Next slide">&#8250;</label>
+          </div>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="project" id="role-personal">
+    <div class="project-inner">
+      <a class="project-back" href="#experience">&larr; Back</a>
+      <p class="project-dates">Ongoing</p>
+      <h2 class="project-org">Personal Projects</h2>
+      <p class="project-role">Side projects, research, &amp; class work</p>
+
+      <div class="project-menu">
+        <a class="project-card" href="#project-brakes">
+          <img src="images/brakes/brake-5.jpg" alt="Fixing Brakes on Volkswagen Taos">
+          <span class="project-card-label">Fixing Brakes on Volkswagen Taos</span>
+        </a>
+        <a class="project-card" href="#project-protein">
+          <img src="images/protein-doc/alphafold.jpg" alt="Temperature-Dependent Protein System">
+          <span class="project-card-label">Temperature-Dependent Protein System</span>
+        </a>
+        <a class="project-card" href="#project-microneedle">
+          <img src="images/microneedle/cad-design.jpg" alt="Microneedle Array Patch Prototyping">
+          <span class="project-card-label">Microneedle Array Patch Prototyping</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="project" id="project-brakes">
+    <div class="project-inner">
+      <a class="project-back" href="#role-personal">&larr; Back</a>
+      <h2 class="project-org">Fixing Brakes on Volkswagen Taos</h2>
+      <p class="figure-text"><strong>Solving problems with a friend and learning new, albeit
+        grease-staining, skills &gt; getting upcharged at a mechanic shop.</strong></p>
+      <p class="figure-text">
+        Car started making uncharacteristic noises upon braking &rarr; recruited my auto-mechanic
+        friend, Nora Clarke, to help me fix it myself &rarr; bought tools, jacked up car, removed
+        tires, checked rotors and brake pads, diagnosed issue, and ordered parts &rarr; still WIP
+        (need to replace rear brake pads).
+      </p>
+
+      <div class="slideshow">
+        <figure class="slide-frame">
+          <input type="radio" name="brake-view" id="brake-slide-1" class="slide-radio" checked>
+          <img class="slide-img" src="images/brakes/brake-5.jpg" alt="Tools laid out for the job">
+          <p class="slide-caption">Gathering tools</p>
+          <div class="slide-nav">
+            <label for="brake-slide-5" class="slide-prev" aria-label="Previous photo">&#8249;</label>
+            <span class="slide-count">1 / 5</span>
+            <label for="brake-slide-2" class="slide-next" aria-label="Next photo">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="brake-view" id="brake-slide-2" class="slide-radio">
+          <img class="slide-img" src="images/brakes/brake-1.jpg" alt="Battery and engine bay access">
+          <p class="slide-caption">Disabling battery to work on rear brakes</p>
+          <div class="slide-nav">
+            <label for="brake-slide-1" class="slide-prev" aria-label="Previous photo">&#8249;</label>
+            <span class="slide-count">2 / 5</span>
+            <label for="brake-slide-3" class="slide-next" aria-label="Next photo">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="brake-view" id="brake-slide-3" class="slide-radio">
+          <img class="slide-img" src="images/brakes/brake-2.jpg" alt="Wheel removed, car on jack stand">
+          <p class="slide-caption">Jacking car and removing tire to check rotor and brake pads</p>
+          <div class="slide-nav">
+            <label for="brake-slide-2" class="slide-prev" aria-label="Previous photo">&#8249;</label>
+            <span class="slide-count">3 / 5</span>
+            <label for="brake-slide-4" class="slide-next" aria-label="Next photo">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="brake-view" id="brake-slide-4" class="slide-radio">
+          <img class="slide-img" src="images/brakes/brake-3.jpg" alt="Wire-brushing the rotor">
+          <p class="slide-caption">Removing rust from front rotor</p>
+          <div class="slide-nav">
+            <label for="brake-slide-3" class="slide-prev" aria-label="Previous photo">&#8249;</label>
+            <span class="slide-count">4 / 5</span>
+            <label for="brake-slide-5" class="slide-next" aria-label="Next photo">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="brake-view" id="brake-slide-5" class="slide-radio">
+          <img class="slide-img" src="images/brakes/brake-4.jpg" alt="Working on the brake caliper">
+          <p class="slide-caption">Removing pin from back caliper to check rear brake pads</p>
+          <div class="slide-nav">
+            <label for="brake-slide-4" class="slide-prev" aria-label="Previous photo">&#8249;</label>
+            <span class="slide-count">5 / 5</span>
+            <label for="brake-slide-1" class="slide-next" aria-label="Next photo">&#8250;</label>
+          </div>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="project" id="project-protein">
+    <div class="project-inner">
+      <a class="project-back" href="#role-personal">&larr; Back</a>
+      <h2 class="project-org">Temperature-Dependent Protein System</h2>
+      <p class="figure-text">
+        For my BIOE44 final project (with Katie Chen and Noa Oranim), I designed and validated a
+        temperature-responsive split transcription factor that regulates gene expression. Below are
+        excerpts from the report covering the circuit design and statistical analysis.
+      </p>
+
+      <p class="figure-text">
+        Engineering gene circuits that respond to precise environmental signals requires molecular switches capable of integrating multiple inputs with high specificity. Temperature is a particularly attractive physiological signal due to its tunability and orthogonality to most chemical inducers. We present a genetic circuit design employing a split transcription factor (TF) to create a temperature-dependent AND-gate system in mammalian cells. TlpA36 is a thermosensitive coiled-coil protein and mutant of the Salmonella TlpA repressor that undergoes a reversible coil-to-uncoil transition at approximately 36 °C (Naik et al., 2001). Using the TlpA36 coil regions, our TF reconstitutes a split LacI DNA-binding domain in a temperature-dependent manner, turning on downstream reporter expression when two constructs are expressed at the inducible temperature.
+      </p>
+
+      <figure class="project-figure">
+        <input type="checkbox" id="lightbox-alphafold" class="lightbox-toggle">
+        <label for="lightbox-alphafold" class="lightbox-backdrop" aria-hidden="true"></label>
+        <label for="lightbox-alphafold" class="lightbox-close" aria-label="Close">&times;</label>
+        <label for="lightbox-alphafold" class="figure-link">
+          <img src="images/protein-doc/alphafold.jpg" alt="AlphaFold2-predicted structure of the HRB fusion protein">
+        </label>
+        <figcaption>
+          <span class="figure-title">AlphaFold2 Prediction of the HRB Fusion Protein</span>
+        </figcaption>
+      </figure>
+
+      <p class="figure-text">
+        Our design include two protein constructs: first, the N-terminal half of LacI (residues 1-315) connected by a linker to the TlpA36 coil domain (aa 94–end) on High Risk Plasmid A (HRA); second,the C -terminal half of LacI (residues 316–360) connected by a linker the TlpA36 coil domain and a VP16 activation domain on High Risk Plasmid B (HRB). LacI is split at residue 315, a cut site shown in literature to preserve structural domains and functionality post-reassembly (Lee et al., 2024). The TlpA36 fragment is truncated to begin at residue 94, the minimal coiled-coil region identified in the literature as sufficient to maintain heterodimerization. Gly-Ser repeat linkers connect the LacI and TlpA36 domains on each plasmid, with linker length optimized using AlphaFold2 to provide sufficient spacing without disrupting domain folding. A nuclear localization signal (NLS; PKKKRKV) is included on both constructs to localize the split TF to the nucleus. The VP16 transactivation domain is placed only on Plasmid B, ensuring that transcriptional activation is contingent on reconstitution of both LacI halves.
+      </p>
+
+      <figure class="project-figure">
+        <img src="images/protein-doc/circuit-diagram.png" alt="Split-LacI-TlpA36 genetic circuit design showing Input A and Input B constructs and temperature-dependent reconstitution">
+        <figcaption>
+          <span class="figure-title">Split-LacI-TlpA36 Genetic Circuit Design</span>
+        </figcaption>
+      </figure>
+
+      <p class="figure-text">
+        To determine whether the observed differences in Split-LacI-TlpA36 AND-gate activation across temperatures were statistically significant, a Kruskal-Wallis H-test was performed on the percent expression values (normalized to full-length LacI-VP16 as 100% and reporter+norm as 0%). The Kruskal-Wallis test was selected as the appropriate non-parametric alternative to a one-way ANOVA, given that Shapiro-Wilk testing indicated departures from normality in several temperature groups. The Kruskal-Wallis test revealed a statistically significant difference in AND-gate activation across the six temperatures tested (p &lt; 0.05), indicating that temperature has a significant effect on construct activity. To identify which specific pairwise comparisons drove this result, Dunn's post-hoc test was conducted with the Benjamini-Hochberg to control the False Discovery Rate (FDR). Benjamini-Hochberg was selected to perform many comparisons between temperatures, detecting true positives, while still controlling the rate of false discoveries.
+      </p>
+      <p class="figure-text">
+        Following the Benjamini-Hochberg test, significant pairwise differences (adjusted p &lt; 0.05) were observed primarily between the permissive temperatures (34 °C and 36 °C) and the more restrictive temperatures (38 °C, 38.5 °C), consistent with the expected temperature-dependent repression profile of the TlpA36 component. These findings support the conclusion that the AND gate is functionally active at 34–36 °C and is significantly repressed at temperatures of 38 °C and above, with 38.5 °C showing the lowest activation (~11%) and 34 °C showing the highest (~60%).
+      </p>
+
+      <figure class="project-figure">
+        <img src="images/protein-doc/and-gate-chart.png" alt="Bar plot of AND-gate activation across six temperature conditions with significance brackets">
+        <figcaption>
+          <span class="figure-title">AND-gate activation of Split-LacI-TlpA36 Across Temperature Range with Benjamini-Hochberg Significant Differences</span>
+          <p class="figure-caption-text">Bar plot showing AND-gate activation (mNeonGreen/mCherry fluorescence ratio, expressed as a percentage of the full LacI-VP16 positive control) across six temperature conditions (34°C, 36°C, 37°C, 38°C, 38.5°C, and 39°C). Individual data points represent biological replicates, with error bars indicating the full range of observed values. Statistically significant pairwise differences identified by Benjamini-Hochberg correction are annotated with brackets (p &lt; 0.05). Activation is highest at sub-transition temperatures (34–37°C) and declines at temperatures exceeding the TlpA36 coil-to-uncoil transition threshold (36°C).</p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="project" id="project-microneedle">
+    <div class="project-inner">
+      <a class="project-back" href="#role-personal">&larr; Back</a>
+      <h2 class="project-org">Microneedle Array Patch Prototyping</h2>
+      <p class="figure-text">
+        3D resin printed microneedle array patch prototype for iGEM project development in
+        Stanford&rsquo;s Product Realization Lab.
+      </p>
+
+      <div class="slideshow">
+        <figure class="slide-frame">
+          <input type="radio" name="microneedle-view" id="microneedle-slide-1" class="slide-radio" checked>
+          <img class="slide-img" src="images/microneedle/cad-design.jpg" alt="CAD model of the microneedle array patch">
+          <p class="slide-caption">Updated Design: Microneedle Array Patch</p>
+          <div class="slide-nav">
+            <label for="microneedle-slide-2" class="slide-prev" aria-label="Previous photo">&#8249;</label>
+            <span class="slide-count">1 / 2</span>
+            <label for="microneedle-slide-2" class="slide-next" aria-label="Next photo">&#8250;</label>
+          </div>
+        </figure>
+        <figure class="slide-frame">
+          <input type="radio" name="microneedle-view" id="microneedle-slide-2" class="slide-radio">
+          <img class="slide-img" src="images/microneedle/printed-patch.jpg" alt="3D-printed microneedle array patch on a fingertip">
+          <p class="slide-caption">Printed Prototype</p>
+          <div class="slide-nav">
+            <label for="microneedle-slide-1" class="slide-prev" aria-label="Previous photo">&#8249;</label>
+            <span class="slide-count">2 / 2</span>
+            <label for="microneedle-slide-1" class="slide-next" aria-label="Next photo">&#8250;</label>
+          </div>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="project" id="contact-page">
+    <div class="project-inner">
+      <a class="project-back" href="#top">&larr; Back</a>
+      <h2 class="project-org">Get in Touch</h2>
+      <p class="project-role">I&rsquo;d love to hear from you &mdash; reach out any way that&rsquo;s easiest.</p>
+
+      <div class="contact-list">
+        <a class="contact-item" href="mailto:ccestone@stanford.edu">
+          <span class="contact-label">Email</span>
+          <span class="contact-value">ccestone@stanford.edu</span>
+        </a>
+        <a class="contact-item" href="tel:+19495069136">
+          <span class="contact-label">Phone</span>
+          <span class="contact-value">949&#8209;506&#8209;9136</span>
+        </a>
+        <a class="contact-item" href="https://www.linkedin.com/in/clara-cestone-7b174226a/" target="_blank" rel="noopener">
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-value">in/clara&#8209;cestone</span>
+        </a>
+        <div class="contact-item contact-item-static">
+          <span class="contact-label">Location</span>
+          <span class="contact-value">Palo Alto, CA</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact" class="footer-band">
+    <div class="wrap footer-inner">
+      <a class="arrow-link" href="#contact-page">&#8599; Get in touch</a>
+      <div class="footer-meta">
+        <a href="mailto:ccestone@stanford.edu">ccestone@stanford.edu</a>
+        <a href="tel:+19495069136">949&#8209;506&#8209;9136</a>
+        <a href="https://www.linkedin.com/in/clara-cestone-7b174226a/" target="_blank" rel="noopener">LinkedIn</a>
+        <span>Palo Alto, CA</span>
+      </div>
+    </div>
+  </footer>
+  <p class="fine">CLARA CESTONE &middot; UPDATED 2026</p>
+</main>
+
+<script>
+(function(){
+  var container = document.getElementById('about-bio');
+  if(!container){ return; }
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduceMotion){ return; }
+
+  var paragraphs = Array.prototype.slice.call(container.querySelectorAll('p'));
+  var fullTexts = paragraphs.map(function(p){ return p.textContent; });
+  paragraphs.forEach(function(p){
+    p.style.minHeight = p.getBoundingClientRect().height + 'px';
+    p.textContent = '';
+  });
+
+  var started = false;
+  function typeAll(){
+    if(started){ return; }
+    started = true;
+    var pIndex = 0, cIndex = 0;
+    function step(){
+      if(pIndex >= paragraphs.length){ return; }
+      var text = fullTexts[pIndex];
+      if(cIndex <= text.length){
+        paragraphs[pIndex].textContent = text.slice(0, cIndex);
+        cIndex++;
+        setTimeout(step, 14);
+      } else {
+        pIndex++;
+        cIndex = 0;
+        setTimeout(step, 220);
+      }
+    }
+    step();
+  }
+
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          typeAll();
+          obs.disconnect();
+        }
+      });
+    }, {threshold:0.35});
+    obs.observe(container);
+  } else {
+    paragraphs.forEach(function(p, i){ p.textContent = fullTexts[i]; });
+  }
+})();
+</script>
+</body>
+</html>
